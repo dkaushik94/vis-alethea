@@ -58,10 +58,10 @@ class App extends Component {
         </h1>
         <div>
           <p>
-            Line Chart
+            Line Chart representation of monthly probabilities of every crime
           </p>
         </div>
-        <LineChart width={730} height={250} data = {data}
+        <LineChart width={800} height={250} data = {data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
@@ -74,17 +74,17 @@ class App extends Component {
           <Line type="monotone" dataKey="BURGLARY" stroke="#900" />
         </LineChart>
         <br/>
-          <p>Bar Chart</p>
-          <BarChart height = {250} width = {730} data = {data}
+          <p>Bar Chart representation of monthly probabilities of every crime</p>
+          <BarChart height = {250} width = {800} data = {data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokedDasharray="3 3" />
           <XAxis dataKey="name" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="MOTOR VEHICLE THEFT" stroke="#8884d8" />
-          <Bar dataKey="THEFT" stroke="#82ca9d" />
-          <Bar dataKey="ROBBERY" stroke="#000000" />
-          <Bar dataKey="BURGLARY" stroke="#900" />
+          <Bar dataKey="MOTOR VEHICLE THEFT" fill="#8884d8" />
+          <Bar dataKey="THEFT" fill="#82ca9d" />
+          <Bar dataKey="ROBBERY" fill="#000000" />
+          <Bar dataKey="BURGLARY" fill="#900" />
           </BarChart>
       </div>
     );
