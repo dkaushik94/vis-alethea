@@ -4,9 +4,10 @@ import './App.css';
 import  {LineChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart} from 'recharts';
 // import q from './q10-da.js'
 var q = require('./q10-d.json');
-
+var q8 = require('./q8-d.json')
 
 let data = [];
+let data8 = [];
 // console.log(q)
 // let data = [
 //   {name: 'Jan', MOTOR_VEHICLE_THEFT: q["1"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["1"]["THEFT"]["prob"], 'ROBBERY': q["1"]["ROBERY"]["prob"], 'BURGLARY': q["1"]["BURGLARY"]["prob"]},
@@ -25,7 +26,7 @@ let data = [];
 
 let months = {
   1: 'Jan', 2:'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sept', 10: 'Oct', 11: 'Nov', 12: 'Dec'
-} 
+}
 
 for(var i = 1; i <=12; i++){
   let d = {};
@@ -38,6 +39,16 @@ for(var i = 1; i <=12; i++){
   data.push(d);
 }
 
+for (var i = 1; i <= 8; i++) {
+	let d = {};
+	d.years = i
+	d.count = q8[i]
+	d.name = i
+	console.log(d)
+	data8.push(d)
+}
+
+console.log(data8)
 
 // for(var i = 1; i <= 12; i++){
 
@@ -85,6 +96,16 @@ class App extends Component {
           <Bar dataKey="THEFT" fill="#82ca9d" />
           <Bar dataKey="ROBBERY" fill="#000000" />
           <Bar dataKey="BURGLARY" fill="#900" />
+          </BarChart>
+        <br/>
+          <p>Bar Chart representation of number of restaurants open after x years of failed inspection</p>
+          <BarChart height = {250} width = {800} data = {data8}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokedDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="count" fill="#900" />
           </BarChart>
       </div>
     );
