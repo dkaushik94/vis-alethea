@@ -56,9 +56,13 @@ if __name__ == '__main__':
                     months[str(f['MONTH'][it])][f['TYPE OF ROBBERY'][it]]['count'] += 1
         print(months)
         
-        f = codecs.open('q10-d.json', 'w+', encoding = 'utf-8')
-        f.write(json.dumps(months, indent = 4))
-        f.close()
+        MakeFile('q10-d.json', months) 
 
     except Exception:
         print(traceback.format_exc())
+
+
+def MakeFile(path, data):
+    f = codecs.open(path, 'w+', encoding = 'utf-8')
+    f.write(json.dumps(data, indent = 4))
+    f.close()

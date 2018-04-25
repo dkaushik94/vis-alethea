@@ -1,41 +1,46 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import  {LineChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart} from 'recharts';
+import  {
+  LineChart, 
+  Line, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  Legend, 
+  BarChart,
+  AreaChart, 
+  Area,
+} from 'recharts';
 // import q from './q10-da.js'
 var q = require('./q10-d.json');
-var q8 = require('./q8-d.json')
+var q8 = require('./q8-d.json');
+let data8 = [];
+
+var q1 = require('./q1-d.json');
 
 let data = [];
-let data8 = [];
-// console.log(q)
-// let data = [
-//   {name: 'Jan', MOTOR_VEHICLE_THEFT: q["1"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["1"]["THEFT"]["prob"], 'ROBBERY': q["1"]["ROBERY"]["prob"], 'BURGLARY': q["1"]["BURGLARY"]["prob"]},
-//   {name: 'Feb', MOTOR_VEHICLE_THEFT: q["2"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["2"]["THEFT"]["prob"], 'ROBBERY': q["2"]["ROBERY"]["prob"], 'BURGLARY': q["2"]["BURGLARY"]["prob"]},
-//   {name: 'Mar', MOTOR_VEHICLE_THEFT: q["3"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["3"]["THEFT"]["prob"], 'ROBBERY': q["3"]["ROBERY"]["prob"], 'BURGLARY': q["3"]["BURGLARY"]["prob"]},
-//   {name: 'Apr', MOTOR_VEHICLE_THEFT: q["4"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["4"]["THEFT"]["prob"], 'ROBBERY': q["4"]["ROBERY"]["prob"], 'BURGLARY': q["4"]["BURGLARY"]["prob"]},
-//   {name: 'May', MOTOR_VEHICLE_THEFT: q["5"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["5"]["THEFT"]["prob"], 'ROBBERY': q["5"]["ROBERY"]["prob"], 'BURGLARY': q["5"]["BURGLARY"]["prob"]},
-//   {name: 'Jun', MOTOR_VEHICLE_THEFT: q["6"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["6"]["THEFT"]["prob"], 'ROBBERY': q["6"]["ROBERY"]["prob"], 'BURGLARY': q["6"]["BURGLARY"]["prob"]},
-//   {name: 'Jul', MOTOR_VEHICLE_THEFT: q["7"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["7"]["THEFT"]["prob"], 'ROBBERY': q["7"]["ROBERY"]["prob"], 'BURGLARY': q["7"]["BURGLARY"]["prob"]},
-//   {name: 'Aug', MOTOR_VEHICLE_THEFT: q["8"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["8"]["THEFT"]["prob"], 'ROBBERY': q["8"]["ROBERY"]["prob"], 'BURGLARY': q["8"]["BURGLARY"]["prob"]},
-//   {name: 'Sept', MOTOR_VEHICLE_THEFT: q["9"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["9"]["THEFT"]["prob"], 'ROBBERY': q["9"]["ROBERY"]["prob"], 'BURGLARY': q["9"]["BURGLARY"]["prob"]},
-//   {name: 'Oct', MOTOR_VEHICLE_THEFT: q["10"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["10"]["THEFT"]["prob"], 'ROBBERY': q["10"]["ROBERY"]["prob"], 'BURGLARY': q["10"]["BURGLARY"]["prob"]},
-//   {name: 'Nov', MOTOR_VEHICLE_THEFT: q["11"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["11"]["THEFT"]["prob"], 'ROBBERY': q["11"]["ROBERY"]["prob"], 'BURGLARY': q["11"]["BURGLARY"]["prob"]},
-//   {name: 'Dec', MOTOR_VEHICLE_THEFT: q["12"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["12"]["THEFT"]["prob"], 'ROBBERY': q["12"]["ROBERY"]["prob"], 'BURGLARY': q["12"]["BURGLARY"]["prob"]}
-// ];
+let data2 = [];
 
 let months = {
   1: 'Jan', 2:'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sept', 10: 'Oct', 11: 'Nov', 12: 'Dec'
 }
 
-for(var i = 1; i <=12; i++){
+data2 = [
+  {Year: "2017", a: (q1["2017"]["a"]/q1["total_crimes"])*100, b: (q1["2017"]["b"]/q1["total_crimes"])*100, c: (q1["2017"]["c"]/(q1["total_crimes"]))*100},
+  {Year: "2018", a: (q1["2018"]["a"]/q1["total_crimes"])*100, b: (q1["2018"]["b"]/q1["total_crimes"])*100, c: (q1["2018"]["c"]/(q1["total_crimes"]))*100}
+]
+
+
+for(var i = 1; i <= 12; i++){
   let d = {};
   d.name = months[i];
   d.mvt = q[i]["MOTOR VEHICLE THEFT"]["prob"];
   d.THEFT = q[i]["THEFT"]["prob"];
   d.ROBBERY = q[i]["ROBBERY"]["prob"]
   d.BURGLARY = q[i]["BURGLARY"]["prob"];
-  // console.log(q.BURGLARY.prob)
   data.push(d);
 }
 
@@ -49,12 +54,35 @@ for (var i = 1; i <= 8; i++) {
 }
 
 console.log(data8)
+const getPercent = (value, total) => {
+	const ratio = total > 0 ? value / total : 0;
+  
+  return toPercent(ratio, 2);
+};
 
-// for(var i = 1; i <= 12; i++){
+const toPercent = (decimal, fixed = 0) => {
+	return `${(decimal * 100).toFixed(fixed)}%`;
+};
 
-//   console.log(q[i]["THEFT"]["prob"]);
-
-// }
+const renderTooltipContent = (o) => {
+	const { payload, label } = o;
+  const total = payload.reduce((result, entry) => (result + entry.value), 0);
+  
+  return (
+  	<div className="customized-tooltip-content">
+    	<p className="total">{`${label} (Total: ${total})`}</p>
+      <ul className="list">
+      	{
+        	payload.map((entry, index) => (
+          	<li key={`item-${index}`} style={{color: entry.color}}>
+            	{`${entry.name}: ${entry.value}(${getPercent(entry.value, total)})`}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  );
+};
 
 class App extends Component {
   render() {
@@ -79,7 +107,7 @@ class App extends Component {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="MOTOR VEHICLE THEFT" stroke="#8884d8" />
+          <Line type="monotone" dataKey="mvt" stroke="#8884d8" />
           <Line type="monotone" dataKey="THEFT" stroke="#82ca9d" />
           <Line type="monotone" dataKey="ROBBERY" stroke="#000000" />
           <Line type="monotone" dataKey="BURGLARY" stroke="#900" />
@@ -92,7 +120,7 @@ class App extends Component {
           <XAxis dataKey="name" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="MOTOR VEHICLE THEFT" fill="#8884d8" />
+          <Bar dataKey="mvt" fill="#8884d8" />
           <Bar dataKey="THEFT" fill="#82ca9d" />
           <Bar dataKey="ROBBERY" fill="#000000" />
           <Bar dataKey="BURGLARY" fill="#900" />
@@ -107,6 +135,16 @@ class App extends Component {
           <Legend />
           <Bar dataKey="count" fill="#900" />
           </BarChart>
+
+          <AreaChart width={800} height={400} data={data2} stackOffset="expand"
+            margin={{top: 10, right: 30, left: 0, bottom: 0}} >
+            <XAxis dataKey="Year"/>
+            <YAxis tickFormatter={toPercent}/>
+            <Tooltip/>
+            <Area type='monotone' dataKey='a' stackId="1" stroke='#8884d8' fill='#8884d8' />
+            <Area type='monotone' dataKey='b' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
+            <Area type='monotone' dataKey='c' stackId="1" stroke='#ffc658' fill='#ffc658' />
+          </AreaChart>
       </div>
     );
   }
