@@ -1,17 +1,49 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import  {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import  {LineChart, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart} from 'recharts';
+// import q from './q10-da.js'
+var q = require('./q10-d.json');
 
-const data = [
-  {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-  {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-  {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-  {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-  {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-  {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-  {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
-];
+
+let data = [];
+// console.log(q)
+// let data = [
+//   {name: 'Jan', MOTOR_VEHICLE_THEFT: q["1"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["1"]["THEFT"]["prob"], 'ROBBERY': q["1"]["ROBERY"]["prob"], 'BURGLARY': q["1"]["BURGLARY"]["prob"]},
+//   {name: 'Feb', MOTOR_VEHICLE_THEFT: q["2"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["2"]["THEFT"]["prob"], 'ROBBERY': q["2"]["ROBERY"]["prob"], 'BURGLARY': q["2"]["BURGLARY"]["prob"]},
+//   {name: 'Mar', MOTOR_VEHICLE_THEFT: q["3"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["3"]["THEFT"]["prob"], 'ROBBERY': q["3"]["ROBERY"]["prob"], 'BURGLARY': q["3"]["BURGLARY"]["prob"]},
+//   {name: 'Apr', MOTOR_VEHICLE_THEFT: q["4"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["4"]["THEFT"]["prob"], 'ROBBERY': q["4"]["ROBERY"]["prob"], 'BURGLARY': q["4"]["BURGLARY"]["prob"]},
+//   {name: 'May', MOTOR_VEHICLE_THEFT: q["5"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["5"]["THEFT"]["prob"], 'ROBBERY': q["5"]["ROBERY"]["prob"], 'BURGLARY': q["5"]["BURGLARY"]["prob"]},
+//   {name: 'Jun', MOTOR_VEHICLE_THEFT: q["6"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["6"]["THEFT"]["prob"], 'ROBBERY': q["6"]["ROBERY"]["prob"], 'BURGLARY': q["6"]["BURGLARY"]["prob"]},
+//   {name: 'Jul', MOTOR_VEHICLE_THEFT: q["7"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["7"]["THEFT"]["prob"], 'ROBBERY': q["7"]["ROBERY"]["prob"], 'BURGLARY': q["7"]["BURGLARY"]["prob"]},
+//   {name: 'Aug', MOTOR_VEHICLE_THEFT: q["8"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["8"]["THEFT"]["prob"], 'ROBBERY': q["8"]["ROBERY"]["prob"], 'BURGLARY': q["8"]["BURGLARY"]["prob"]},
+//   {name: 'Sept', MOTOR_VEHICLE_THEFT: q["9"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["9"]["THEFT"]["prob"], 'ROBBERY': q["9"]["ROBERY"]["prob"], 'BURGLARY': q["9"]["BURGLARY"]["prob"]},
+//   {name: 'Oct', MOTOR_VEHICLE_THEFT: q["10"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["10"]["THEFT"]["prob"], 'ROBBERY': q["10"]["ROBERY"]["prob"], 'BURGLARY': q["10"]["BURGLARY"]["prob"]},
+//   {name: 'Nov', MOTOR_VEHICLE_THEFT: q["11"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["11"]["THEFT"]["prob"], 'ROBBERY': q["11"]["ROBERY"]["prob"], 'BURGLARY': q["11"]["BURGLARY"]["prob"]},
+//   {name: 'Dec', MOTOR_VEHICLE_THEFT: q["12"]["MOTOR VEHICLE THEFT"]["prob"], 'THEFT': q["12"]["THEFT"]["prob"], 'ROBBERY': q["12"]["ROBERY"]["prob"], 'BURGLARY': q["12"]["BURGLARY"]["prob"]}
+// ];
+
+let months = {
+  1: 'Jan', 2:'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sept', 10: 'Oct', 11: 'Nov', 12: 'Dec'
+} 
+
+for(var i = 1; i <=12; i++){
+  let d = {};
+  d.name = months[i];
+  d.mvt = q[i]["MOTOR VEHICLE THEFT"]["prob"];
+  d.THEFT = q[i]["THEFT"]["prob"];
+  d.ROBBERY = q[i]["ROBBERY"]["prob"]
+  d.BURGLARY = q[i]["BURGLARY"]["prob"];
+  // console.log(q.BURGLARY.prob)
+  data.push(d);
+}
+
+
+// for(var i = 1; i <= 12; i++){
+
+//   console.log(q[i]["THEFT"]["prob"]);
+
+// }
 
 class App extends Component {
   render() {
@@ -24,6 +56,11 @@ class App extends Component {
         <h1 className="App-intro">
           Visualizations!
         </h1>
+        <div>
+          <p>
+            Line Chart
+          </p>
+        </div>
         <LineChart width={730} height={250} data = {data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -31,14 +68,24 @@ class App extends Component {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="MOTOR VEHICLE THEFT" stroke="#8884d8" />
+          <Line type="monotone" dataKey="THEFT" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="ROBBERY" stroke="#000000" />
+          <Line type="monotone" dataKey="BURGLARY" stroke="#900" />
         </LineChart>
-        <div>
-          <p>Chris Alphones</p>
-        </div>
-
-
+        <br/>
+          <p>Bar Chart</p>
+          <BarChart height = {250} width = {730} data = {data}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokedDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="MOTOR VEHICLE THEFT" stroke="#8884d8" />
+          <Bar dataKey="THEFT" stroke="#82ca9d" />
+          <Bar dataKey="ROBBERY" stroke="#000000" />
+          <Bar dataKey="BURGLARY" stroke="#900" />
+          </BarChart>
       </div>
     );
   }
