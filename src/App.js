@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './Logo.png';
 import './App.css';
 import  {
   LineChart, 
@@ -13,16 +13,19 @@ import  {
   BarChart,
   AreaChart, 
   Area,
+  ComposedChart
 } from 'recharts';
 // import q from './q10-da.js'
 var q = require('./q10-d.json');
 var q8 = require('./q8-d.json');
-let data8 = [];
+var q9 = require('./q9-d.json');
 
 var q1 = require('./q1-d.json');
 
 let data = [];
 let data2 = [];
+let data8 = [];
+let data9 = [];
 
 let months = {
   1: 'Jan', 2:'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sept', 10: 'Oct', 11: 'Nov', 12: 'Dec'
@@ -32,6 +35,14 @@ data2 = [
   {Year: "2017", a: (q1["2017"]["a"]/q1["total_crimes"])*100, b: (q1["2017"]["b"]/q1["total_crimes"])*100, c: (q1["2017"]["c"]/(q1["total_crimes"]))*100},
   {Year: "2018", a: (q1["2018"]["a"]/q1["total_crimes"])*100, b: (q1["2018"]["b"]/q1["total_crimes"])*100, c: (q1["2018"]["c"]/(q1["total_crimes"]))*100}
 ]
+
+data9 = [
+  {name: 'Range: 1-5', Crimes: q9["range1"]},
+  {name: 'Range: 6-10', Crimes: q9["range2"]},
+  {name: 'Range: 11-15', Crimes: q9["range3"]},
+  {name: 'Range: 15-Above', Crimes: q9["range4"]},
+]
+console.log(data9)
 
 
 for(var i = 1; i <= 12; i++){
@@ -88,8 +99,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <header>
+          <img src={logo} style={styles.logo} alt="logo" />
           <h1 className="App-title">Alethea</h1>
         </header>
         <h1 className="App-intro">
@@ -100,6 +111,8 @@ class App extends Component {
             Line Chart representation of monthly probabilities of every crime
           </p>
         </div>
+
+        {/* Line Chart */}
         <LineChart width={800} height={250} data = {data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -113,6 +126,8 @@ class App extends Component {
           <Line type="monotone" dataKey="BURGLARY" stroke="#900" />
         </LineChart>
         <br/>
+
+          {/* Bar Chart */}
           <p>Bar Chart representation of monthly probabilities of every crime</p>
           <BarChart height = {250} width = {800} data = {data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -126,6 +141,7 @@ class App extends Component {
           <Bar dataKey="BURGLARY" fill="#900" />
           </BarChart>
         <br/>
+        {/* Bar Chart */}
           <p>Bar Chart representation of number of restaurants open after x years of failed inspection</p>
           <BarChart height = {250} width = {800} data = {data8}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -135,7 +151,8 @@ class App extends Component {
           <Legend />
           <Bar dataKey="count" fill="#900" />
           </BarChart>
-
+          <br />
+          <p>Area Chart representation of type of establishment with percentage of crimes.</p>
           <AreaChart width={800} height={400} data={data2} stackOffset="expand"
             margin={{top: 10, right: 30, left: 0, bottom: 0}} >
             <XAxis dataKey="Year"/>
@@ -145,8 +162,28 @@ class App extends Component {
             <Area type='monotone' dataKey='b' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
             <Area type='monotone' dataKey='c' stackId="1" stroke='#ffc658' fill='#ffc658' />
           </AreaChart>
+          <br />
+          <p>Composed Charts representation of Range of liquor licenses with Crimes taking place</p>
+          <ComposedChart width={800} height={400} data={data9}
+            margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+              <CartesianGrid stroke='#f5f5f5'/>
+              <XAxis dataKey="name"/>
+              <YAxis />
+              <Tooltip/>
+              <Legend/>
+              <Bar dataKey='Crimes' barSize={20} fill='#413ea0'/>
+              <Line type='monotone' dataKey='Crimes' stroke='#ff7300'/>
+          </ComposedChart>
       </div>
     );
+  }
+}
+
+
+const styles = {
+  logo: {
+    height: '60px',
+    width: '60px'
   }
 }
 
