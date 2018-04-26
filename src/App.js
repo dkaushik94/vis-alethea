@@ -41,8 +41,8 @@ let months = {
 
 
 data2 = [
-  {Year: "2017", a: (q1["2017"]["a"]/q1["total_crimes"])*100, b: (q1["2017"]["b"]/q1["total_crimes"])*100, c: (q1["2017"]["c"]/(q1["total_crimes"]))*100},
-  {Year: "2018", a: (q1["2018"]["a"]/q1["total_crimes"])*100, b: (q1["2018"]["b"]/q1["total_crimes"])*100, c: (q1["2018"]["c"]/(q1["total_crimes"]))*100}
+  {Year: "2017", a: (q1["2017"]["a"]/q1["total_crimes"])*1000*0.1, b: (q1["2017"]["b"]/q1["total_crimes"])*100*0.01, c: (q1["2017"]["c"]/(q1["total_crimes"]))*100*0.001},
+  {Year: "2018", a: (q1["2018"]["a"]/q1["total_crimes"])*100*0.1, b: (q1["2018"]["b"]/q1["total_crimes"])*100*0.01, c: (q1["2018"]["c"]/(q1["total_crimes"]))*100*0.001}
 ]
 
 
@@ -54,14 +54,12 @@ data9 = [
 ]
 
 data6 = [
-  {name: 'Rating 1', positive: q6["positive"]["1"], negative: q6["negative"]["1"], total: 8000},
-  {name: 'Rating 2', positive: q6["positive"]["2"], negative: q6["negative"]["2"], total: 8000},
-  {name: 'Rating 3', positive: q6["positive"]["3"], negative: q6["negative"]["3"], total: 8000},
-  {name: 'Rating 4', positive: q6["positive"]["4"], negative: q6["negative"]["4"], total: 8000},
-  {name: 'Rating 5', positive: q6["positive"]["5"], negative: q6["negative"]["5"], total: 8000}
+  {name: '{★}', positive: q6["positive"]["1"], negative: q6["negative"]["1"], total: 8000},
+  {name: '{★★}', positive: q6["positive"]["2"], negative: q6["negative"]["2"], total: 8000},
+  {name: '{★★★}', positive: q6["positive"]["3"], negative: q6["negative"]["3"], total: 8000},
+  {name: '{★★★★}', positive: q6["positive"]["4"], negative: q6["negative"]["4"], total: 8000},
+  {name: '{★★★★★}', positive: q6["positive"]["5"], negative: q6["negative"]["5"], total: 8000}
 ]
-
-
 
 for(var i = 1; i <= 12; i++){
   let d = {};
@@ -99,12 +97,12 @@ const renderTooltipContent = (o) => {
   
   return (
   	<div className="customized-tooltip-content">
-    	<p className="total">{`${label} (Total: ${total})`}</p>
+    	<p className="total">{'${label} (Total: ${total})'}</p>
       <ul className="list">
       	{
         	payload.map((entry, index) => (
-          	<li key={`item-${index}`} style={{color: entry.color}}>
-            	{`${entry.name}: ${entry.value}(${getPercent(entry.value, total)})`}
+          	<li key={'item-${index}'} style={{color: entry.color}}>
+            	{'${entry.name}: ${entry.value}(${getPercent(entry.value, total)})'}
             </li>
           ))
         }
