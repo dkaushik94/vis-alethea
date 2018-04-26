@@ -6,6 +6,7 @@ import logo from './Logo.png';
 import './App.css';
 import Particles from 'react-particles-js';
 import  {
+  Brush,
   LineChart, 
   Line, 
   Bar, 
@@ -164,7 +165,7 @@ class App extends Component {
           "shape": {
             "type": "circle",
             "stroke": {
-              "width": 1,
+              "width": 2,
               "color": "#000000"
             },
             polygon: {
@@ -205,32 +206,37 @@ class App extends Component {
             <style>
               @import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,700|Raleway:400,500,600,700');
             </style>
+            <title>Alethea | Data Viz</title>
             <img src={logo} style={styles.logo} alt="logo" />
             <h1 style = {styles.fontHeaderProps}>Alethea</h1>
           </header>
           <h3 style = {styles.fontHeaderProps}>
-            Visualizations!
+            Visualizations for the City of Chicago!
           </h3>
           {/* Line Chart */}
+          <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>INTRODUCTION</p>
           <div style = {styles.centerBox} class = "card">
             <div style = {styles.divBoxes}>
-              <p style = {{fontFamily: '"Raleway", sans-serif'}}>
+              <p style = {{fontFamily: '"Raleway", sans-serif', textAlign:'left!important', margin: '15px'}}>
                 This is the data visualization page for various data about the City of Chicago.
+                Write description and methods here.
               </p>
             </div>
+            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>VIS AND GRAPHS</p>
             <div style={styles.divBoxes}>
               <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif'}}>Line Chart representation of monthly probabilities of every crime</p>
               <LineChart width={800} height={250} data = {data}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                margin={{ top: 10, right: 30, left: 20, bottom: 10 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" padding={{left: 30, right: 30}}/>
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="MOTOR_VEHICLE_THEFT" stroke="#8884d8" />
-                <Line type="monotone" dataKey="THEFT" stroke="#82ca9d" />
-                <Line type="monotone" dataKey="ROBBERY" stroke="#000000" />
-                <Line type="monotone" dataKey="BURGLARY" stroke="#900" />
+                <Line type="monotone" dataKey="MOTOR_VEHICLE_THEFT" stroke="#f98866" />
+                <Line type="monotone" dataKey="THEFT" stroke="#fb6542"/>
+                <Line type="monotone" dataKey="ROBBERY" stroke="#80bd90" />
+                <Line type="monotone" dataKey="BURGLARY" stroke="#89da59" />
+                <Brush style = {{margin: '10px'}} />
               </LineChart>
             </div>
             {/* Bar Chart */}
@@ -238,15 +244,16 @@ class App extends Component {
               <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif'}}>Bar Chart representation of monthly probabilities of every crime</p>
               <BarChart height = {250} width = {800} data = {data}
               margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-              <CartesianGrid strokedDasharray="3 3" />
-              <XAxis dataKey="name" padding={{left: 30, right: 30}}/>
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="mvt" fill="#8884d8" />
-              <Bar dataKey="THEFT" fill="#82ca9d" />
-              <Bar dataKey="ROBBERY" fill="#000000" />
-              <Bar dataKey="BURGLARY" fill="#900" />
+                <CartesianGrid strokedDasharray="3 3" />
+                <XAxis dataKey="name" padding={{left: 30, right: 30}}/>
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="MOTOR_VEHICLE_THEFT" fill="#f98866" />
+                <Bar dataKey="THEFT" fill="#fb6542" />
+                <Bar dataKey="ROBBERY" fill="#80bd90" />
+                <Bar dataKey="BURGLARY" fill="#89da59" />
+                <Brush style = {{margin: '10px'}} />
               </BarChart>
             </div>
 
@@ -259,7 +266,7 @@ class App extends Component {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="count" fill="#900" />
+            <Bar dataKey="count" fill="#FFB6C1" />
             </BarChart>
             </div>
 
@@ -285,7 +292,7 @@ class App extends Component {
                   <YAxis />
                   <Tooltip/>
                   <Legend/>
-                  <Bar dataKey='Crimes' barSize={20} fill='#413ea0'/>
+                  <Bar dataKey='Crimes' barSize={20} fill='#66a5ad'/>
                   <Line type='monotone' dataKey='Crimes' stroke='#ff7300'/>
               </ComposedChart>
             </div>
@@ -294,30 +301,34 @@ class App extends Component {
               <RadarChart cx={300} cy={250} outerRadius={200} width={600} height={500} data={data6}>
                 <PolarGrid />
                 <PolarAngleAxis dataKey="name" />
-                <PolarRadiusAxis angle={30} domain={[0, 8000]}/>
+                <PolarRadiusAxis angle={45} domain={[0, 8000]}/>
+                <Tooltip />
                 <Radar name="Positive" dataKey="positive" stroke="#8884d8" fill="#8884d8" fillOpacity={0.5}/>
                 <Legend stroke = "#000000"/>
+                <Brush />
               </RadarChart>
             
               <RadarChart cx={300} cy={250} outerRadius={200} width={600} height={500} data={data6}>
                 <PolarGrid />
                 <PolarAngleAxis dataKey="name" />
-                <PolarRadiusAxis angle={30} domain={[0, 4000]}/>
+                <PolarRadiusAxis angle={45} domain={[0, 4000]}/>
+                <Tooltip />
                 <Radar name="Negative" dataKey="negative" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.5}/>
                 <Legend />
+                <Brush />
               </RadarChart>
             </div>
             <div style = {[styles.centerBox, styles.divBoxes]}>
               <BubbleChart
               style = {[styles.centerBox, styles.divBoxes]}
                     graph = {{
-                      zoom: 1.1,
+                      zoom: 1,
                       offsetX: 0,
-                      offsetY: -0.01,
+                      offsetY: 0,
                     }}
                     width={900}
                     height={800}
-                    showLegend={true} // optional value, pass false to disable the legend.
+                    showLegend={false} // optional value, pass false to disable the legend.
                     legendPercentage={20} // number that represent the % of with that legend going to use.
                     legendFont={{
                           family: 'Arial',
@@ -338,6 +349,15 @@ class App extends Component {
                           weight: 'bold',
                         }}
                     data={data6_2} />
+                    <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', background: 'white', width: 'auto', display: 'inline-block'}}>Fig: Radar Chart representation for Review Rating VS Predicted Sentiment fo the reviews.</p>
+            </div>
+            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>ARTIFACTS & CODE</p>
+            <div style = {styles.divBoxes}>
+              <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1rem'}}>All of the code from data pulling, cleaning, loading and visulization are available at:</p>
+              <ul style = {{textAlign: 'left', width: '100%'}}>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>ETL/ Data pipeline Code Repository: <a href= 'https://github.com/titu1994/IDS-Course-Project' target = '_blank'>Github</a></li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>Visualization Code Repository: <a href= 'https://github.com/dkaushik94/vis-alethea' target = '_blank'>Github</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -355,6 +375,7 @@ const styles = {
   divBoxes: {
     boxShadow: '2px 2px 10px #888886',
     margin: '10px',
+    padding: '10px',
     borderRadius: '3px',
     backgroundColor: 'white',
     width: '75%',
