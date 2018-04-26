@@ -13,36 +13,54 @@ import  {
   BarChart,
   AreaChart, 
   Area,
-  ComposedChart
+  ComposedChart,
+  Radar, 
+  RadarChart, 
+  PolarGrid, 
+  PolarAngleAxis, 
+  PolarRadiusAxis
 } from 'recharts';
 // import q from './q10-da.js'
 var q = require('./q10-d.json');
+var q1 = require('./q1-d.json');
 var q8 = require('./q8-d.json');
 var q9 = require('./q9-d.json');
+var q6 = require('./q6-d.json');
 
-var q1 = require('./q1-d.json');
 
 let data = [];
 let data2 = [];
+let data6 = [];
 let data8 = [];
 let data9 = [];
+
 
 let months = {
   1: 'Jan', 2:'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sept', 10: 'Oct', 11: 'Nov', 12: 'Dec'
 }
+
 
 data2 = [
   {Year: "2017", a: (q1["2017"]["a"]/q1["total_crimes"])*100, b: (q1["2017"]["b"]/q1["total_crimes"])*100, c: (q1["2017"]["c"]/(q1["total_crimes"]))*100},
   {Year: "2018", a: (q1["2018"]["a"]/q1["total_crimes"])*100, b: (q1["2018"]["b"]/q1["total_crimes"])*100, c: (q1["2018"]["c"]/(q1["total_crimes"]))*100}
 ]
 
+
 data9 = [
-  {name: 'Range: 1-5', Crimes: q9["range1"]},
-  {name: 'Range: 6-10', Crimes: q9["range2"]},
-  {name: 'Range: 11-15', Crimes: q9["range3"]},
-  {name: 'Range: 15-Above', Crimes: q9["range4"]},
+  {name: '1-5', Crimes: q9["range1"]},
+  {name: '6-10', Crimes: q9["range2"]},
+  {name: '11-15', Crimes: q9["range3"]},
+  {name: '15-Above', Crimes: q9["range4"]},
 ]
-console.log(data9)
+
+data6 = [
+  {name: 'Rating 1', positive: q6["positive"]["1"], negative: q6["negative"]["1"], total: 8000},
+  {name: 'Rating 2', positive: q6["positive"]["2"], negative: q6["negative"]["2"], total: 8000},
+  {name: 'Rating 3', positive: q6["positive"]["3"], negative: q6["negative"]["3"], total: 8000},
+  {name: 'Rating 4', positive: q6["positive"]["4"], negative: q6["negative"]["4"], total: 8000},
+  {name: 'Rating 5', positive: q6["positive"]["5"], negative: q6["negative"]["5"], total: 8000}
+]
+
 
 
 for(var i = 1; i <= 12; i++){
@@ -174,6 +192,20 @@ class App extends Component {
               <Bar dataKey='Crimes' barSize={20} fill='#413ea0'/>
               <Line type='monotone' dataKey='Crimes' stroke='#ff7300'/>
           </ComposedChart>
+          <RadarChart cx={300} cy={250} outerRadius={200} width={600} height={500} data={data6}>
+            <PolarGrid />
+            <PolarAngleAxis dataKey="name" />
+            <PolarRadiusAxis angle={30} domain={[0, 8000]}/>
+            <Radar name="Positive" dataKey="positive" stroke="#8884d8" fill="#8884d8" fillOpacity={0.5}/>
+            <Legend />
+          </RadarChart>
+          <RadarChart cx={300} cy={250} outerRadius={200} width={600} height={500} data={data6}>
+            <PolarGrid />
+            <PolarAngleAxis dataKey="name" />
+            <PolarRadiusAxis angle={30} domain={[0, 4000]}/>
+            <Radar name="Negative" dataKey="negative" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.5}/>
+            <Legend />
+          </RadarChart>
       </div>
     );
   }
