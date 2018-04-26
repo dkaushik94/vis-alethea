@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BubbleChart from '@weknow/react-bubble-chart-d3';
 import logo from './Logo.png';
 import './App.css';
 import  {
@@ -26,14 +27,14 @@ var q1 = require('./q1-d.json');
 var q8 = require('./q8-d.json');
 var q9 = require('./q9-d.json');
 var q6 = require('./q6-d.json');
-
+var q6_2 = require('./q6-d2.json');
 
 let data = [];
 let data2 = [];
 let data6 = [];
 let data8 = [];
 let data9 = [];
-
+let data6_2 = [];
 
 let months = {
   1: 'Jan', 2:'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sept', 10: 'Oct', 11: 'Nov', 12: 'Dec'
@@ -61,6 +62,16 @@ data6 = [
   {name: '{★★★★★}', positive: q6["positive"]["5"], negative: q6["negative"]["5"], total: 8000}
 ]
 
+data6_2 = []
+
+for (var i = 0; i < 20; i++) {
+  let d = {};
+  d.label = Object.keys(q6_2)[i];
+  // d.value = Object.keys(q6_2)[i][1];
+  console.log(Object.keys(q6_2)[i])
+  // data6_2.push(d);
+}
+
 for(var i = 1; i <= 12; i++){
   let d = {};
   d.name = months[i];
@@ -76,11 +87,11 @@ for (var i = 1; i <= 8; i++) {
 	d.years = i
 	d.count = q8[i]
 	d.name = i
-	console.log(d)
+	// console.log(d)
 	data8.push(d)
 }
 
-console.log(data8)
+// console.log(data8)
 const getPercent = (value, total) => {
 	const ratio = total > 0 ? value / total : 0;
   
@@ -204,6 +215,38 @@ class App extends Component {
             <Radar name="Negative" dataKey="negative" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.5}/>
             <Legend />
           </RadarChart>
+          <div>
+          <BubbleChart
+                graph = {{
+                  zoom: 1.1,
+                  offsetX: -0.05,
+                  offsetY: -0.01,
+                }}
+                width={1000}
+                height={800}
+                showLegend={true} // optional value, pass false to disable the legend.
+                legendPercentage={20} // number that represent the % of with that legend going to use.
+                legendFont={{
+                      family: 'Arial',
+                      size: 12,
+                      color: '#000',
+                      weight: 'bold',
+                    }}
+                valueFont={{
+                      family: 'Arial',
+                      size: 12,
+                      color: '#fff',
+                      weight: 'bold',
+                    }}
+                labelFont={{
+                      family: 'Arial',
+                      size: 16,
+                      color: '#fff',
+                      weight: 'bold',
+                    }}
+                data={data6_2}
+              />
+          </div>
       </div>
     );
   }
