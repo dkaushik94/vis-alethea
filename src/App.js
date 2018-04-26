@@ -64,12 +64,12 @@ data6 = [
 
 data6_2 = []
 
-for (var i = 0; i < 20; i++) {
+for (var i = 0; i < Object.keys(q6_2).length; i++) {
   let d = {};
   d.label = Object.keys(q6_2)[i];
-  // d.value = Object.keys(q6_2)[i][1];
-  console.log(Object.keys(q6_2)[i])
-  // data6_2.push(d);
+  d.value = Object.keys(q6_2)[i][1];
+  // console.log(Object.keys(q6_2)[i])
+  data6_2.push(d);
 }
 
 for(var i = 1; i <= 12; i++){
