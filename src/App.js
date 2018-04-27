@@ -341,8 +341,8 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
               <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                 
                 <ul>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather+ Crimes + Census</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities vs Month</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather + Crimes + Census</p>
                   {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
                   <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
@@ -365,12 +365,12 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
             <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                 
                 <ul>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather+ Crimes + Census</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Number of restaurants vs Number of years alive after failed inspection</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Food Inspections + Business Licenses</p>
                   {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
-                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
-                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>Robberies have a higher probability of taking place in the months of September and December. This might be due to student moving and shifting during the month of deptember and robberies tend to take place in DEcember due to people going on vacations due to Christmas leaving their houses vulnerable.</li>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>A majority of restaurants who fail their food inspections close down by year 1-2 after the failed inspection date. Surprisingly, many restaurants survive year 3-4 too displaying the lax in strictness by the proper authorities.</li>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>The distribution of the count of restaurants surviving over the years is not linear. This at least shows that when the years increase, the amount of restaurants go down above linear scale. This is good news for patrons in Chicago!</li>
                 </ul>
               </div>
             </div>
@@ -389,12 +389,12 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
               <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                 
                 <ul>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather+ Crimes + Census</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime percentage vs Type of establishment</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Crimes + Business License</p>
                   {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
-                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
-                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>Robberies have a higher probability of taking place in the months of September and December. This might be due to student moving and shifting during the month of deptember and robberies tend to take place in DEcember due to people going on vacations due to Christmas leaving their houses vulnerable.</li>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We can clearly see that crimes happening at grocery stores and restaurants have gone down from 2017 to 2018. This shows the trend of more crimes being prevented due to stricter rules.</li>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>Surprisingly, crimes occuring at schools have increased from 2017 to 2018. These crimes may happen around the school area that can contribute to this statistic.</li>
                 </ul>
               </div>
             </div>
@@ -415,7 +415,7 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                 
                 <ul>
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather+ Crimes + Census</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather + Crimes + Census</p>
                   {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
                   <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
@@ -448,7 +448,7 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                 
                 <ul>
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather+ Crimes + Census</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather + Crimes + Census</p>
                   {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
                   <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
@@ -487,15 +487,14 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                           weight: 'bold',
                         }}
                     data={data6_2} />
-                    <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', background: 'white', width: 'auto', display: 'inline-block'}}>Fig: Bubble Chart representation for top K  restaurants with their ratings aggregated.</p>
                     <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                       <ul>
-                        <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
-                        <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather+ Crimes + Census</p>
+                        <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Review Ratings vs Review Counts</p>
+                        <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Yelp Dataset + Yelp Reviews</p>
                         {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
                         <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
-                        <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
-                        <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>Robberies have a higher probability of taking place in the months of September and December. This might be due to student moving and shifting during the month of deptember and robberies tend to take place in DEcember due to people going on vacations due to Christmas leaving their houses vulnerable.</li>
+                        <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We can clearly see that people are more prone to report a restaurant's positive qualities much more than the negative qualities.</li>
+                        <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>A majority of the popular reviews in terms of count for a particular restaurant seem to hover around 4-5 stars. We can also see that people usually review more on the same restaurant with different ratings. This can show which restaurants have contensting reviews.</li>
                       </ul>
                     </div>
             </div>
