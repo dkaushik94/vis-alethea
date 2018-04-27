@@ -23,7 +23,8 @@ import  {
   RadarChart, 
   PolarGrid, 
   PolarAngleAxis, 
-  PolarRadiusAxis
+  PolarRadiusAxis,
+  ResponsiveContainer
 } from 'recharts';
 
 let background_url = require('./shots.jpg');
@@ -430,11 +431,37 @@ class App extends Component {
             </div>
             <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>ARTIFACTS & CODE</p>
             <div style = {styles.divBoxes}>
-              <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1rem'}}>All of the code from data pulling, cleaning, loading and visulization are available at:</p>
-              <ul style = {{textAlign: 'left', width: '100%'}}>
-                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>ETL/ Data pipeline Code Repository: <a href= 'https://github.com/titu1994/IDS-Course-Project' target = '_blank'>Github</a></li>
-                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>Visualization Code Repository: <a href= 'https://github.com/dkaushik94/vis-alethea' target = '_blank'>Github</a></li>
+              <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1rem', margin: '5px'}}>All of the code from data pulling, cleaning, loading and visualization are available at:</p>
+              <ul style = {{textAlign: 'left', width: '100%', margin: '5px auto'}}>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- ETL/ Data pipeline Code Repository: <a href= 'https://github.com/titu1994/IDS-Course-Project' target = '_blank'>Github</a></li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Visualization Code Repository: <a href= 'https://github.com/dkaushik94/vis-alethea' target = '_blank'>Github</a></li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Project Updates website <a href= 'https://titu1994.github.io/IDS-Course-Project/' target = '_blank'> here.</a></li>
               </ul>
+            </div>
+            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>TEAM MEMBERS</p>
+            <div style = {styles.divBoxes}>
+            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1rem', margin: '5px'}}>
+              The project was developed by team 'ALETHEA' for the course of Introduction to Data Science for the Spring of 2018 at University of Illinois at Chicago.
+              <br />
+              <br />
+              This course was designed and taught by <a href = "https://www.cs.uic.edu/Cruz/" target = "_blank"><b>Prof. Isabel Cruz.</b></a>
+              <br />
+              <br />
+              The teaching assistants for the course were:
+              <div style = {{display: 'flex', justifyContent: 'center'}}>
+                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="http://www.vivekrs.com/" target = '_blank'>Vivek R. Shivaprabhu</a></b></li>
+                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="http://boomasb.com/" target = '_blank'>Booma S. Balasubramani</a></b></li>
+                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b>"Ellen" Zhu Wang</b></li>
+              </div>
+            </p>
+            <br />
+            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: "1.2rem", margin: "0px"}}>Team members: </p>
+            <div style = {{display: 'flex'}}>
+              <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="https://github.com/titu1994" target = '_blank'>Somshubra Majumdar</a></b></li>
+              <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/abhoi" target = "_blank">Amlaan Bhoi</a></b></li>
+              <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/dkaushik94" target = "_blank">Debojit Kaushik</a></b></li>
+              <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/calphones" target = "_blank">Christopher Alphones</a></b></li>
+            </div>
             </div>
           </div>
         </div>
