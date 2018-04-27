@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import BubbleChart from '@weknow/react-bubble-chart-d3';
 import logo from './Logo.png';
+import axios from 'axios';
 import './App.css';
 import Particles from 'react-particles-js';
 import  {
@@ -209,6 +210,11 @@ const renderTooltipContent = (o) => {
 
 class App extends Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {input:''};
+	}
+
   setMarker = () => {
     var uluru = { lat: 41.874306, lng: -87.647175 };
     var marker = new window.google.maps.Marker({
@@ -217,8 +223,47 @@ class App extends Component {
     });
   };
 
+  updateState = (event) => {
+  	console.log(event.target.value);
+  	// axios.post('http://35.193.72.219:9000/sentiment/dl', {
+  	// 	"model_name": "lstm",
+  	// 	"query": event.target.value
+  	// })
+  	// .then((res) => {
+  	// 	console.log(res);
+  	// })
+  	// .catch((e) => {
+  	// 	console.log(e);
+  	// });
+  	axios({
+  		method: "post",
+  		url: "http://35.193.72.219:9000/sentiment/dl",
+  		crossDomain: true,
+  		headers: {
+  			"Access-Control-Allow-Origin": "*",
+  			"Content-Type": "application/json"
+  		},
+  		data: {
+  			"model_name": "lstm",
+  			"query": event.target.value
+  		}
+  	})
+  	.then((res) => {
+  		// console.log(this.refs.conf.innerHTML + '1');
+  		this.refs.conf.innerHTML = res.data.confidence
+  		if (res.data.sentiment == 'P') {
+  			this.refs.lab.innerHTML = 'Positive';
+  		} else {
+  			this.refs.lab.innerHTML = 'Negative';
+  		}
+  		// this.refs.lab.innerHTML = res.data.sentiment
+  	});
+  	// this.setState({input: event.target.value});
+  }
+
   componentWillMount(){
     document.title = "Alethea | Data Viz"
+    console.log(this)
   }
 
   render() {
@@ -499,6 +544,13 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                         <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>A majority of the popular reviews in terms of count for a particular restaurant seem to hover around 4-5 stars. We can also see that people usually review more on the same restaurant with different ratings. This can show which restaurants have contensting reviews.</li>
                       </ul>
                     </div>
+            </div>
+            <div style = {styles.divBoxes}>
+            <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Live Sentiment Analysis of Text! -</p>
+            	<input type="text" onChange={this.updateState}/>
+            	<p style = {{fontFamily: '"Raleway", sans-serif', textAlign:'left!important', margin: '15px'}}><b>Confidence:</b> <span id="conf" ref="conf"></span></p>
+            	<p style = {{fontFamily: '"Raleway", sans-serif', textAlign:'left!important', margin: '15px'}}><b>Sentiment:</b> <span id="lab" ref="lab"></span></p>
+            	<p style = {{fontFamily: '"Raleway", sans-serif', textAlign:'left!important', margin: '15px'}}>Yes! Seriously. You get live analysis of your text in the above text box. We call our custom API running Keras Multiplicative LSTM and LSTM models on a Flask Server. Go nuts!</p>
             </div>
             <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>ARTIFACTS & CODE</p>
             <div style = {styles.divBoxes}>
