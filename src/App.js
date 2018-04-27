@@ -445,12 +445,12 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
               <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                 
                 <ul>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather + Crimes + Census</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Review Ratings vs Sentiment Labels</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Yelp Reviews + Yelp Dataset</p>
                   {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
-                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
-                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>Robberies have a higher probability of taking place in the months of September and December. This might be due to student moving and shifting during the month of deptember and robberies tend to take place in DEcember due to people going on vacations due to Christmas leaving their houses vulnerable.</li>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>One of the biggest correlations we see is that positive (+) sentiments are linked more towards 4-5 review ratings for a particular restaurant. Almost 8000 reviews that have given 5 star ratings have a positive sentiment with 4 star reviews tagging behind at about 6000.</li>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>Negative (-) sentiments are linked more with review ratings of 1-3. This is expected and makes sense. The most number of review ratings class that correlates with negative sentiments is review with ratings of 3 at about 3000 reviews.</li>
                 </ul>
               </div>
             </div>
