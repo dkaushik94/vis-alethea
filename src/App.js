@@ -13,7 +13,8 @@ import  {
   XAxis, 
   YAxis, 
   CartesianGrid, 
-  Tooltip, 
+  Tooltip,
+  Label, 
   Legend, 
   BarChart,
   AreaChart, 
@@ -360,7 +361,7 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="count" fill="#FFB6C1" />
+            <Bar dataKey="count" name = "No. of restaurants" fill="#FFB6C1" />
             </BarChart>
             <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                 
@@ -382,9 +383,10 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                 <XAxis dataKey="Year" padding={{left: 30, right: 30}}/>
                 <YAxis tickFormatter={toPercent}/>
                 <Tooltip/>
-                <Area type='monotone' dataKey='a' stackId="1" stroke='#8884d8' fill='#8884d8' />
-                <Area type='monotone' dataKey='b' stackId="1" stroke='#82ca9d' fill='#82ca9d' />
-                <Area type='monotone' dataKey='c' stackId="1" stroke='#ffc658' fill='#ffc658' />
+                <Legend />
+                <Area type='monotone' dataKey='a' name = "Grocery Store" stackId="1" stroke='#8884d8' fill='#8884d8' />
+                <Area type='monotone' dataKey='b' name = "Schools" stackId="1" stroke='#82ca9d' fill='#82ca9d' />
+                <Area type='monotone' dataKey='c' name = "Restaurants" stackId="1" stroke='#ffc658' fill='#ffc658' />
               </AreaChart>
               <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                 
@@ -455,6 +457,7 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
               </div>
             </div>
             <div style = {styles.divBoxes}>
+            <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Top 20 Reviews Count Aggregated by Restaurant and Ratings -</p>
               <BubbleChart
               style = {[styles.centerBox, styles.divBoxes]}
                     graph = {{
@@ -485,6 +488,7 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                           weight: 'bold',
                         }}
                     data={data6_2} />
+                    <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '0.8rem'}}> <b>Rating to Color</b> - 5: Green 4: Blue 3: Yellow 2: Red 1: Black </p>
                     <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                       <ul>
                         <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Review Ratings vs Review Counts</p>
