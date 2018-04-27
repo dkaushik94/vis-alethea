@@ -507,28 +507,52 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
             </div>
             <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>TEAM MEMBERS</p>
             <div style = {styles.divBoxes}>
-            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1rem', margin: '5px'}}>
-              The project was developed by team 'ALETHEA' for the course of Introduction to Data Science for the Spring of 2018 at University of Illinois at Chicago.
+              <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1rem', margin: '5px'}}>
+                The project was developed by team 'ALETHEA' for the course of Introduction to Data Science for the Spring of 2018 at University of Illinois at Chicago.
+                <br />
+                <br />
+                This course was designed and taught by <a href = "https://www.cs.uic.edu/Cruz/" target = "_blank"><b>Prof. Isabel Cruz.</b></a>
+                <br />
+                <br />
+                The teaching assistants for the course were:
+                <div style = {{display: 'flex', justifyContent: 'center'}}>
+                  <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="http://www.vivekrs.com/" target = '_blank'>Vivek R. Shivaprabhu</a></b></li>
+                  <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="http://boomasb.com/" target = '_blank'>Booma S. Balasubramani</a></b></li>
+                  <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b>"Ellen" Zhu Wang</b></li>
+                </div>
+              </p>
               <br />
-              <br />
-              This course was designed and taught by <a href = "https://www.cs.uic.edu/Cruz/" target = "_blank"><b>Prof. Isabel Cruz.</b></a>
-              <br />
-              <br />
-              The teaching assistants for the course were:
-              <div style = {{display: 'flex', justifyContent: 'center'}}>
-                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="http://www.vivekrs.com/" target = '_blank'>Vivek R. Shivaprabhu</a></b></li>
-                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="http://boomasb.com/" target = '_blank'>Booma S. Balasubramani</a></b></li>
-                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b>"Ellen" Zhu Wang</b></li>
+              <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: "1.2rem", margin: "0px"}}>Team members: </p>
+              <div style = {{display: 'flex'}}>
+                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="https://github.com/titu1994" target = '_blank'>Somshubra Majumdar</a></b></li>
+                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/abhoi" target = "_blank">Amlaan Bhoi</a></b></li>
+                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/dkaushik94" target = "_blank">Debojit Kaushik</a></b></li>
+                <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/calphones" target = "_blank">Christopher Alphones</a></b></li>
               </div>
-            </p>
-            <br />
-            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: "1.2rem", margin: "0px"}}>Team members: </p>
-            <div style = {{display: 'flex'}}>
-              <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b><a href="https://github.com/titu1994" target = '_blank'>Somshubra Majumdar</a></b></li>
-              <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/abhoi" target = "_blank">Amlaan Bhoi</a></b></li>
-              <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/dkaushik94" target = "_blank">Debojit Kaushik</a></b></li>
-              <li style = {{listStyle: "None", fontFamily: '"Raleway", sans-serif', margin: '3px'}}><b> • <a href= "https://github.com/calphones" target = "_blank">Christopher Alphones</a></b></li>
             </div>
+            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>REFERENCES & LIBRARIES USED</p>
+            <div style = {styles.divBoxes}>
+              <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1rem', margin: '5px'}}>On top of the cleaning and development code written we found a lot of help online and the libraries which made this possible in the time frame are:</p>
+              <ul style = {{textAlign: 'left', width: '100%', margin: '5px auto'}}>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Keras for Deep Learning</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- NumPy</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- SciPy</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- scikit-learn</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Pandas python library</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- ScraPy</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- usaddress</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- TensorFlow</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- scrapy-beautifulsoup</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- ReactJS for website</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- ReCharts for data Visualization</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- react-leaflet for Heatmap</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- City of Chicago data portal for data sources</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- census.gov for data sources</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Wunderground API for weather data</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Python documentation, ReactJS Documentation</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- create-react-app for bootstrapping the project</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Flask</li>
+              </ul>
             </div>
           </div>
         </div>
