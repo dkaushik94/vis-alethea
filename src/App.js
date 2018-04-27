@@ -676,18 +676,18 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                 <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Python documentation, ReactJS Documentation</li>
                 <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- create-react-app for bootstrapping the project</li>
                 <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- Flask</li>
+                <li style = {{listStyle: 'None', fontFamily: '"Raleway", sans-serif'}}>- ParticlesJS</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <div>
-      <Map
-                    ref={m => { this.leafletMap = m; }}
-                    center={mapCenter}
-                    zoom={zoomLevel}
-                    minZoom={minZoomLevel}
-                >
+      <div style = {styles.parentBox}>
+      <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Interactive Map with Census Block vs Business Licenses vs Crimes -</p>
+      <Map ref={m => { this.leafletMap = m; }}
+            center={mapCenter}
+            zoom={zoomLevel}
+            minZoom={minZoomLevel}>
                     <TileLayer
                         attribution={osmAttr}
                         url={osmTiles}
@@ -698,8 +698,6 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                         <GeoJSON id={index} data ={item} style={this.getStyle} onEachFeature ={this.onEachFeature} />
                       )
                   })}
-     
-
             </Map>    
         </div>
       </div>
