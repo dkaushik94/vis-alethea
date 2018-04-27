@@ -2,9 +2,11 @@
 
 import React, { Component } from 'react';
 import BubbleChart from '@weknow/react-bubble-chart-d3';
+import { Map, TileLayer,GeoJSON } from 'react-leaflet';
 import logo from './Logo.png';
 import axios from 'axios';
 import './App.css';
+import 'leaflet/dist/leaflet.css'
 import Particles from 'react-particles-js';
 import  {
   Brush,
@@ -29,6 +31,14 @@ import  {
   ResponsiveContainer
 } from 'recharts';
 
+const osmTiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const osmAttr = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+const mapCenter = [41.881832, -87.623177];  
+const zoomLevel = 15;
+const minZoomLevel= 10;
+
+
+
 let background_url = require('./shots.jpg');
 var q = require('./q10-d.json');
 var q1 = require('./q1-d.json');
@@ -36,7 +46,8 @@ var q8 = require('./q8-d.json');
 var q9 = require('./q9-d.json');
 var q6 = require('./q6-d.json');
 var q6_2 = require('./q6-d2.json');
-
+var geojson = require('./data.json');
+var shade ='#F79F1F';
 let data = [];
 let data2 = [];
 let data6 = [];
@@ -265,6 +276,61 @@ class App extends Component {
     document.title = "Alethea | Data Viz"
     console.log(this)
   }
+  onEachFeature(feature, layer) {
+         
+    layer.bindPopup(feature.properties.tract_bloc+"::"+"Liquor Business : "+feature.properties.name10+"::Crimes :  "+feature.properties.countyfp10);
+        var x = feature.properties.countyfp10
+    
+    }
+
+getStyle(feature, layer) {
+    var x = feature.properties.countyfp10
+    switch (true) {
+        case (x < 6):
+        shade = '#99FF00'
+            break;
+        case (x < 10):
+        shade = '#999900';
+            break;
+        case (x < 15):
+        shade = '#999900';
+            break;
+       
+         case (x < 20 ):
+         shade = '#CC6600';
+         break;
+
+         case (x < 25):
+         shade = '#CC3300';
+         break;
+
+         case (x < 30):
+         shade = '#FF3300';
+         break;
+       
+         case (x < 40):
+         shade = '#FF3333';
+         break;
+
+         case (x < 50):
+         shade = '#CC9900';
+         break;
+
+         case (x < 74):
+         shade = '#990000';
+         break;
+
+         default:
+        shade = '#6ab04c';            
+        break;
+    }
+
+    return {
+      color: shade,
+      weight: 2,
+      opacity: 0.75
+    }
+  }
 
   render() {
     let mapOptions = {
@@ -272,6 +338,8 @@ class App extends Component {
       center: { lat: 41.874306, lng: -87.647175 }
     };
     return (
+      <div>
+        
       <div>
         <Particles style = {styles.particles} 
         params = {{
@@ -613,6 +681,28 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
           </div>
         </div>
       </div>
+      <div>
+      <Map
+                    ref={m => { this.leafletMap = m; }}
+                    center={mapCenter}
+                    zoom={zoomLevel}
+                    minZoom={minZoomLevel}
+                >
+                    <TileLayer
+                        attribution={osmAttr}
+                        url={osmTiles}
+                    />
+
+                     {geojson['features'].map((item, index)=>{
+                      return(
+                        <GeoJSON id={index} data ={item} style={this.getStyle} onEachFeature ={this.onEachFeature} />
+                      )
+                  })}
+     
+
+            </Map>    
+        </div>
+      </div>
     );
   }
 }
@@ -673,6 +763,9 @@ const styles = {
     fontSize: '2rem',
     margin: '5px'
   }
+
+ 
+ 
 }
 
 export default App;
