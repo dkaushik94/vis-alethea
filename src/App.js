@@ -414,12 +414,10 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
               <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
                 
                 <ul>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
-                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather + Crimes + Census</p>
-                  {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> No. of Crimes at establishement VS Liquor Licenses</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Businesses + Crime </p>
                   <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
-                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
-                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>Robberies have a higher probability of taking place in the months of September and December. This might be due to student moving and shifting during the month of deptember and robberies tend to take place in DEcember due to people going on vacations due to Christmas leaving their houses vulnerable.</li>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We can see restaurants with less licenses see a higher number of crimes. This is suggestive of these establishments don't enforce proper decorum and law within their control giving a rise to susceptibility towards crimes taking place.</li>
                 </ul>
               </div>
             </div>
