@@ -160,10 +160,10 @@ for (i = 0; i < Object.keys(q6_2).length; i++) {
 for(i = 1; i <= 12; i++){
   let d = {};
   d.name = months[i];
-  d.MOTOR_VEHICLE_THEFT = q[i]["MOTOR VEHICLE THEFT"]["prob"];
-  d.THEFT = q[i]["THEFT"]["prob"];
-  d.ROBBERY = q[i]["ROBBERY"]["prob"]
-  d.BURGLARY = q[i]["BURGLARY"]["prob"];
+  d.MOTOR_VEHICLE_THEFT = q[i]["MOTOR VEHICLE THEFT"]["prob"]/q[i]["MOTOR VEHICLE THEFT"]["count"];
+  d.THEFT = q[i]["THEFT"]["prob"]/q[i]["THEFT"]["count"];
+  d.ROBBERY = q[i]["ROBBERY"]["prob"]/q[i]["ROBBERY"]["count"]
+  d.BURGLARY = q[i]["BURGLARY"]["prob"]/q[i]["BURGLARY"]["count"];
   data.push(d);
 }
 
@@ -215,6 +215,10 @@ class App extends Component {
       map: window.gmaps['map1'].gmap
     });
   };
+
+  componentWillMount(){
+    document.title = "Alethea | Data Viz"
+  }
 
   render() {
     let mapOptions = {
@@ -303,9 +307,9 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
 
               </p>
             </div>
-            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>VIS AND GRAPHS</p>
+            <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>VIZ: GRAPHS & INFERENCES</p>
             <div style={styles.divBoxes}>
-              <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif'}}>Line Chart representation of monthly probabilities of every crime</p>
+              <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Line Chart representation of monthly probabilities of every crime -</p>
               <LineChart width={800} height={250} data = {data}
                 margin={{ top: 10, right: 30, left: 20, bottom: 10 }}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -314,15 +318,13 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                 <Tooltip />
                 <Legend />
                 <Line type="monotone" dataKey="MOTOR_VEHICLE_THEFT" stroke="#f98866" />
-                <Line type="monotone" dataKey="THEFT" stroke="#fb6542"/>
-                <Line type="monotone" dataKey="ROBBERY" stroke="#80bd90" />
+                <Line type="monotone" dataKey="THEFT" stroke="#FFAA00"/>
+                <Line type="monotone" dataKey="ROBBERY" stroke="#008081" />
                 <Line type="monotone" dataKey="BURGLARY" stroke="#89da59" />
                 <Brush style = {{margin: '10px'}} />
               </LineChart>
-            </div>
-            {/* Bar Chart */}
-            <div style = {styles.divBoxes}>
-              <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif'}}>Bar Chart representation of monthly probabilities of every crime</p>
+            <br />
+              <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Bar Chart representation of monthly probabilities of every crime -</p>
               <BarChart height = {250} width = {800} data = {data}
               margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokedDasharray="3 3" />
@@ -331,15 +333,26 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="MOTOR_VEHICLE_THEFT" fill="#f98866" />
-                <Bar dataKey="THEFT" fill="#fb6542" />
-                <Bar dataKey="ROBBERY" fill="#80bd90" />
+                <Bar dataKey="THEFT" fill="#FFAA00" />
+                <Bar dataKey="ROBBERY" fill="#008081" />
                 <Bar dataKey="BURGLARY" fill="#89da59" />
                 <Brush style = {{margin: '10px'}} />
               </BarChart>
+              <div style = {{display: 'flex', width: '100%', textAlign: 'left', flexDirection: 'column', margin: '10px'}}>
+                
+                <ul>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Title:</b> Crime probabilities VS Month</p>
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Data used:</b> Weather+ Crimes + Census</p>
+                  {/* <li style = {{listStyle: 'none',fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}></li> */}
+                  <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.1rem'}}><b>Inferences:</b></p>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>We see a dip in Motor Vehicle Theft after a peak in starting of the year. This might be due to the fact that a lot of people buy new automobiles and are susceptible to theft.</li>
+                  <li style = {{fontFamily: '"Raleway", sans-serif', fontSize : '0.8rem'}}>Robberies have a higher probability of taking place in the months of September and December. This might be due to student moving and shifting during the month of deptember and robberies tend to take place in DEcember due to people going on vacations due to Christmas leaving their houses vulnerable.</li>
+                </ul>
+              </div>
             </div>
 
             <div style = {styles.divBoxes}>
-            <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif'}}>Bar Chart representation of number of restaurants open after x years of failed inspection</p>
+            <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Bar Chart representation of number of restaurants open after x years of failed inspection -</p>
             <BarChart height = {250} width = {800} data = {data8}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokedDasharray="3 3" />
@@ -352,7 +365,7 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
             </div>
 
             <div style = {styles.divBoxes}>
-              <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif'}}>Area Chart representation of type of establishment with percentage of crimes.</p>
+              <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Area Chart representation of type of establishment with percentage of crimes -</p>
               <AreaChart width={800} height={400} data={data2} stackOffset="expand"
                 margin={{top: 10, right: 30, left: 0, bottom: 0}} >
                 <XAxis dataKey="Year" padding={{left: 30, right: 30}}/>
@@ -365,7 +378,7 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
             </div>
 
             <div style = {styles.divBoxes}>
-              <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif'}}>Composed Charts representation of Range of liquor licenses with Crimes taking place</p>
+              <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Composed Charts representation of Range of liquor licenses with Crimes taking place -</p>
               <ComposedChart width={800} height={400} data={data9}
                 margin={{top: 20, right: 20, bottom: 20, left: 20}}>
                   <CartesianGrid stroke='#f5f5f5'/>
@@ -378,7 +391,7 @@ Finally, we see a bubble chart with restaurants and the number of reviews they r
               </ComposedChart>
             </div>
             <div style = {styles.divBoxes}>
-            <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif'}}>Radar Chart representation for Review Rating VS Predicted Sentiment fo the reviews.</p>
+            <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', fontSize: '1.2rem'}}>- Radar Chart representation for Review Rating VS Predicted Sentiment fo the reviews -</p>
               <RadarChart cx={300} cy={250} outerRadius={200} width={600} height={500} data={data6}>
                 <PolarGrid />
                 <PolarAngleAxis dataKey="name" />
