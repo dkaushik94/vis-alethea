@@ -296,8 +296,11 @@ class App extends Component {
           <div style = {styles.centerBox} class = "card">
             <div style = {styles.divBoxes}>
               <p style = {{fontFamily: '"Raleway", sans-serif', textAlign:'left!important', margin: '15px'}}>
-                This is the data visualization page for various data about the City of Chicago.
-                Write description and methods here.
+                Welcome to our data visualization page for the City of Chicago! This is our attempt to illustrate and differentiate the different aspects of Chicago from various datasets. All data shown here is an amalgamation of predictions and analytics curated from datasets available at data.cityofchicago.org. <br /><br />
+We start the visualization journey by exploring the relationship between various types of robberies and the number of their occurrences throughout the year month-wise. You can view it through the eyes of a line graph. The next plot is a bar chart which aims to focus on the actual differences in occurrences of crime over different months of the year. Next, we move on to an interesting view which shows a bar chart with the number of restaurants open after failing a food inspection review for a certain range of years. Fortunately, the data here shows majority of the restaurants close within two years of a failed inspection! Next, we see an area chart showing the decrease in crimes by types of establishment throughout Chicago. <br /><br />
+We then move on to a composed chart showing the relationship between the number of liquor licenses and the number of crimes occurring in or around the establishment. We then move on to two extremely interesting yet expected radar charts. These charts show the correlation between positive or negative sentiment labels of a restaurant’s review with the actual rating given to that restaurant. As we can see, positive sentiments correlate to ratings of 4-5 while negative correlate to 1-3. <br /><br />
+Finally, we see a bubble chart with restaurants and the number of reviews they received. Each bubble shows one (restaurant, review rating) pair combination. Green means 5 stars, blue means 4 stars, yellow means 3 stars, and red means 2 stars. As we can see, most of reviews accumulated to each restaurant is usually in the 4-5 range. This gives us a glimpse into the distribution of the dataset which shows people are NOT highly invested in rating a restaurant too bad. If there are complaints, they are less expressed than a praise.
+
               </p>
             </div>
             <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>VIS AND GRAPHS</p>
