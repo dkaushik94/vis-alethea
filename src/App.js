@@ -70,11 +70,88 @@ data6 = [
 
 data6_2 = []
 
+function assign_color(o) {
+	switch(o) {
+  	case 2:
+  		return '#EA4335';
+  	case 3:
+  		return '#FBBC05';
+  	case 4:
+  		return '#34A853';
+  	case 5:
+  		return '#4285F4';
+  	default:
+  		return '#2c3e50';
+  }
+}
+
 for (i = 0; i < Object.keys(q6_2).length; i++) {
   let d = {};
-  d.label = Object.keys(q6_2)[i];
-  d.value = q6_2[Object.keys(q6_2)[i]][1];
-  d.color = '#' + 
+  // console.log(q6_2[Object.keys(q6_2)[i]])
+  switch(q6_2[Object.keys(q6_2)[i]].length) {
+  	case 2:
+  		// 1 review rating for restaurant
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][1];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][0]);
+  		break;
+  	case 4:
+  		// 2 review ratings for restaurant
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][1];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][0]);
+  		data6_2.push(d);
+  		d = [];
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][3];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][2]);
+  		data6_2.push(d);
+  		break;
+  	case 6:
+  		// 3 review ratings for restaurant
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][1];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][0]);
+  		data6_2.push(d);
+  		d = [];
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][3];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][2]);
+  		data6_2.push(d);
+  		d = [];
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][5];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][4]);
+  		data6_2.push(d);
+  		break;
+  	case 8:
+  		// 4 review ratings for restaurant
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][1];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][0]);
+  		data6_2.push(d);
+  		d = [];
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][3];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][2]);
+  		data6_2.push(d);
+  		d = [];
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][5];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][4]);
+  		data6_2.push(d);
+  		d = [];
+  		d.label = Object.keys(q6_2)[i];
+  		d.value = q6_2[Object.keys(q6_2)[i]][7];
+  		d.color = assign_color(q6_2[Object.keys(q6_2)[i]][6]);
+  		data6_2.push(d);
+  		break;
+  	default:
+  		console.log('not printed')
+  }
+  // Object.keys(q6_2)[i][0] == 2
+  // console.log(q6_2[Object.keys(q6_2)[i]][0])
+  // d.color = '#' + ;
   data6_2.push(d);
 }
 
@@ -324,10 +401,10 @@ class App extends Component {
                     graph = {{
                       zoom: 1,
                       offsetX: 0,
-                      offsetY: 0,
+                      offsetY: 0.01,
                     }}
                     width={900}
-                    height={800}
+                    height={900}
                     showLegend={false} // optional value, pass false to disable the legend.
                     legendPercentage={20} // number that represent the % of with that legend going to use.
                     legendFont={{
@@ -349,7 +426,7 @@ class App extends Component {
                           weight: 'bold',
                         }}
                     data={data6_2} />
-                    <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', background: 'white', width: 'auto', display: 'inline-block'}}>Fig: Radar Chart representation for Review Rating VS Predicted Sentiment fo the reviews.</p>
+                    <p style = {{color: 'black', fontFamily: '"Raleway", sans-serif', background: 'white', width: 'auto', display: 'inline-block'}}>Fig: Bubble Chart representation for top K  restaurants with their ratings aggregated.</p>
             </div>
             <p style = {{fontFamily: '"Raleway", sans-serif', fontSize: '1.3rem'}}>ARTIFACTS & CODE</p>
             <div style = {styles.divBoxes}>
